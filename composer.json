@@ -1,5 +1,5 @@
 {
-    "name": "elephox/sail",
+    "name": "elephox/plane",
     "description": "Docker files for running a basic Elephox application.",
     "keywords": ["elephox", "docker"],
     "license": "MIT",
