@@ -1,0 +1,234 @@
+#!/usr/bin/env bash
+
+UNAMEOUT="$(uname -s)"
+
+# Verify operating system is supported...
+case "${UNAMEOUT}" in
+    Linux*)             MACHINE=linux;;
+    Darwin*)            MACHINE=mac;;
+    *)                  MACHINE="UNKNOWN"
+esac
+
+if [ "$MACHINE" == "UNKNOWN" ]; then
+    echo "Unsupported operating system [$(uname -s)]. Plane supports macOS, Linux, and Windows (WSL2)." >&2
+
+    exit 1
+fi
+
+# Determine if stdout is a terminal...
+if test -t 1; then
+    # Determine if colors are supported...
+    ncolors=$(tput colors)
+
+    if test -n "$ncolors" && test "$ncolors" -ge 8; then
+        BOLD="$(tput bold)"
+        YELLOW="$(tput setaf 3)"
+        GREEN="$(tput setaf 2)"
+        NC="$(tput sgr0)"
+    fi
+fi
+
+# Function that prints the available commands...
+function display_help {
+    echo "Elephox Plane"
+    echo
+    echo "${YELLOW}Usage:${NC}" >&2
+    echo "  plane COMMAND [options] [arguments]"
+    echo
+    echo "Unknown commands are passed to the docker-compose binary."
+    echo
+    echo "${YELLOW}docker-compose Commands:${NC}"
+    echo "  ${GREEN}plane up${NC}        Start the application"
+    echo "  ${GREEN}plane up -d${NC}     Start the application in the background"
+    echo "  ${GREEN}plane stop${NC}      Stop the application"
+    echo "  ${GREEN}plane restart${NC}   Restart the application"
+    echo "  ${GREEN}plane ps${NC}        Display the status of all containers"
+    echo
+    echo "${YELLOW}Phox Commands:${NC}"
+    echo "  ${GREEN}plane phox ...${NC}          Run a Phox command"
+    echo
+    echo "${YELLOW}PHP Commands:${NC}"
+    echo "  ${GREEN}plane php ...${NC}   Run a snippet of PHP code"
+    echo "  ${GREEN}plane php -v${NC}"
+    echo
+    echo "${YELLOW}Composer Commands:${NC}"
+    echo "  ${GREEN}plane composer ...${NC}                       Run a Composer command"
+    echo
+    echo "${YELLOW}Container CLI:${NC}"
+    echo "  ${GREEN}plane shell${NC}        Start a shell session within the application container"
+    echo "  ${GREEN}plane bash${NC}         Alias for 'plane shell'"
+    echo "  ${GREEN}plane root-shell${NC}   Start a root shell session within the application container"
+    echo "  ${GREEN}plane root-bash${NC}    Alias for 'plane root-shell'"
+    echo
+    echo "${YELLOW}Sharing:${NC}"
+    echo "  ${GREEN}plane share${NC}   Share the application publicly via a temporary URL"
+    echo
+    echo "${YELLOW}Customization:${NC}"
+    echo "  ${GREEN}plane build --no-cache${NC}       Rebuild all of the Plane containers"
+
+    exit 1
+}
+
+# Proxy the "help" command...
+if [ $# -gt 0 ]; then
+    if [ "$1" == "help" ] || [ "$1" == "-h" ] || [ "$1" == "-help" ] || [ "$1" == "--help" ]; then
+        display_help
+    fi
+else
+    display_help
+fi
+
+if [ -f ./.env ]; then
+    source ./.env
+fi
+
+# Define environment variables...
+export APP_PORT=${APP_PORT:-80}
+export APP_SERVICE=${APP_SERVICE:-"elephox"}
+export DB_PORT=${DB_PORT:-3306}
+export WWWUSER=${WWWUSER:-$UID}
+export WWWGROUP=${WWWGROUP:-$(id -g)}
+
+# Function that outputs Plane is not running...
+function plane_is_not_running {
+    echo "${BOLD}Plane is not running.${NC}" >&2
+    echo "" >&2
+    echo "${BOLD}You may fly using the following commands:${NC} './vendor/bin/plane up' or './vendor/bin/plane up -d'" >&2
+
+    exit 1
+}
+
+# Define Docker Compose command prefix...
+if [ -x "$(command -v docker-compose)" ]; then
+    DOCKER_COMPOSE=(docker-compose)
+else
+    DOCKER_COMPOSE=(docker compose)
+fi
+
+EXEC="yes"
+
+if [ -z "$PLANE_SKIP_CHECKS" ]; then
+    # Ensure that Docker is running...
+    if ! docker info > /dev/null 2>&1; then
+        echo "${BOLD}Docker is not running.${NC}" >&2
+
+        exit 1
+    fi
+
+    # Determine if Plane is currently up...
+    if "${DOCKER_COMPOSE[@]}" ps "$APP_SERVICE" 2>&1 | grep 'Exit\|exited'; then
+        echo "${BOLD}Shutting down old Plane processes...${NC}" >&2
+
+        "${DOCKER_COMPOSE[@]}" down > /dev/null 2>&1
+
+        EXEC="no"
+    elif [ -z "$("${DOCKER_COMPOSE[@]}" ps -q)" ]; then
+        EXEC="no"
+    fi
+fi
+
+ARGS=()
+
+# Proxy PHP commands to the "php" binary on the application container...
+if [ "$1" == "php" ]; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec -u plane)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=("$APP_SERVICE" "php" "$@")
+    else
+        plane_is_not_running
+    fi
+
+# Proxy vendor binary commands on the application container...
+elif [ "$1" == "bin" ]; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec -u plane)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=("$APP_SERVICE" ./vendor/bin/"$@")
+    else
+        plane_is_not_running
+    fi
+
+# Proxy docker-compose commands to the docker-compose binary on the application container...
+elif [ "$1" == "docker-compose" ]; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec -u plane)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=("$APP_SERVICE" "${DOCKER_COMPOSE[@]}")
+    else
+        plane_is_not_running
+    fi
+
+# Proxy Composer commands to the "composer" binary on the application container...
+elif [ "$1" == "composer" ]; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec -u plane)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=("$APP_SERVICE" "composer" "$@")
+    else
+        plane_is_not_running
+    fi
+
+# Proxy Phox commands to the "phox" binary on the application container...
+elif [ "$1" == "phox" ]; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec -u plane)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=("$APP_SERVICE" php phox "$@")
+    else
+        plane_is_not_running
+    fi
+
+# Proxy the "debug" command to the "php phox" binary on the application container with xdebug enabled...
+elif [ "$1" == "debug" ]; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec -u plane -e XDEBUG_SESSION=1)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=("$APP_SERVICE" php phox "$@")
+    else
+        plane_is_not_running
+    fi
+
+# Initiate a Bash shell within the application container...
+elif [ "$1" == "shell" ] || [ "$1" == "bash" ]; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec -u plane)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=("$APP_SERVICE" bash "$@")
+    else
+        plane_is_not_running
+    fi
+
+# Initiate a root user Bash shell within the application container...
+elif [ "$1" == "root-shell" ] || [ "$1" == "root-bash" ]; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=("$APP_SERVICE" bash "$@")
+    else
+        plane_is_not_running
+    fi
+
+# Pass unknown commands to the "docker-compose" binary...
+else
+    ARGS+=("$@")
+fi
+
+# Run Docker Compose with the defined arguments...
+"${DOCKER_COMPOSE[@]}" "${ARGS[@]}"

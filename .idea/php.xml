@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/elephox/collection" />
+      <path value="$PROJECT_DIR$/vendor/elephox/configuration" />
+      <path value="$PROJECT_DIR$/vendor/elephox/console" />
+      <path value="$PROJECT_DIR$/vendor/elephox/di" />
+      <path value="$PROJECT_DIR$/vendor/elephox/files" />
+      <path value="$PROJECT_DIR$/vendor/elephox/logging" />
+      <path value="$PROJECT_DIR$/vendor/elephox/mimey" />
+      <path value="$PROJECT_DIR$/vendor/elephox/oor" />
+      <path value="$PROJECT_DIR$/vendor/elephox/stream" />
+      <path value="$PROJECT_DIR$/vendor/elephox/support" />
+      <path value="$PROJECT_DIR$/vendor/jetbrains/phpstorm-attributes" />
+      <path value="$PROJECT_DIR$/vendor/ricardoboss/php-console-logger" />
+      <path value="$PROJECT_DIR$/vendor/elephox/autoloading" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" />
+    </phpunit_settings>
+  </component>
+</project>
