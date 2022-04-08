@@ -60,9 +60,6 @@ function display_help {
     echo "  ${GREEN}plane root-shell${NC}   Start a root shell session within the application container"
     echo "  ${GREEN}plane root-bash${NC}    Alias for 'plane root-shell'"
     echo
-    echo "${YELLOW}Sharing:${NC}"
-    echo "  ${GREEN}plane share${NC}   Share the application publicly via a temporary URL"
-    echo
     echo "${YELLOW}Customization:${NC}"
     echo "  ${GREEN}plane build --no-cache${NC}       Rebuild all of the Plane containers"
 
