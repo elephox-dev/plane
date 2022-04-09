@@ -9,7 +9,6 @@ use Elephox\Console\Command\CommandInvocation;
 use Elephox\Console\Command\CommandTemplateBuilder;
 use Elephox\Console\Command\Contract\CommandHandler;
 use Elephox\Logging\Contract\Logger;
-use Elephox\Stream\StringStream;
 
 class InstallCommand implements CommandHandler
 {
@@ -21,8 +20,7 @@ class InstallCommand implements CommandHandler
 	public function __construct(
 		private readonly Logger $logger,
 		private readonly Environment $environment,
-	)
-	{
+	) {
 	}
 
 	public function configure(CommandTemplateBuilder $builder): void
@@ -46,7 +44,16 @@ class InstallCommand implements CommandHandler
 
 		$this->logger->debug('Installing services: ' . implode(', ', $services));
 
-		$this->buildDockerCompose($services);
+		$dockerCompose = $this->buildDockerCompose($services);
+
+		$dockerComposeFile = $this->environment->getRootDirectory()->getFile('docker-compose.yml');
+		if ($dockerComposeFile->exists()) {
+			$this->logger->error('Docker-compose file already exists. Please remove it before installing.');
+
+			return 1;
+		}
+
+		$dockerComposeFile->putContents($dockerCompose);
 
 		$this->logger->info('Plane installed successfully.');
 
@@ -56,29 +63,28 @@ class InstallCommand implements CommandHandler
 	/**
 	 * @param list<string> $services
 	 */
-	protected function buildDockerCompose(array $services): void
+	protected function buildDockerCompose(array $services): string
 	{
 		$depends = Enumerable::from($services)
-			->where(fn(string $service) => in_array($service, self::STUBBED_SERVICES, true))
-			->select(fn(string $service) => "            - $service")
-			->aggregate(fn (string $acc, string $item) => $acc . "\n" . $item, "");
+			->where(static fn (string $service) => in_array($service, self::STUBBED_SERVICES, true))
+			->select(static fn (string $service) => "            - $service")
+			->aggregate(static fn (string $acc, string $item) => $acc . "\n" . $item, '')
+		;
 
 		if (!empty($depends)) {
 			$depends = "depends_on:\n" . $depends;
 		}
 
 		$stubs = rtrim(
-				Enumerable::from($services)
-					->select(function (string $service) {
-						return file_get_contents(self::STUBS_DIR . "/$service.stub");
-					})
-					->aggregate(fn (string $acc, string $item) => $acc . $item, "")
+			Enumerable::from($services)
+					->select(static fn (string $service) => file_get_contents(self::STUBS_DIR . "/$service.stub"))
+					->aggregate(static fn (string $acc, string $item) => $acc . $item, ''),
 		);
 
 		$volumes = Enumerable::from($services)
-			->where(fn(string $service) => in_array($service, self::VOLUMED_SERVICES, true))
-			->select(fn(string $service) => "    plane-$service:\n        driver: local")
-			->aggregate(fn (string $acc, string $item) => $acc . "\n" . $item, "")
+			->where(static fn (string $service) => in_array($service, self::VOLUMED_SERVICES, true))
+			->select(static fn (string $service) => "    plane-$service:\n        driver: local")
+			->aggregate(static fn (string $acc, string $item) => $acc . "\n" . $item, '')
 		;
 
 		if (!empty($volumes)) {
@@ -97,15 +103,9 @@ class InstallCommand implements CommandHandler
 				$stubs,
 				$volumes,
 			],
-			$dockerCompose
+			$dockerCompose,
 		);
 
-		// Remove empty lines...
-		$dockerCompose = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $dockerCompose);
-
-		$this->environment->getRootDirectory()
-			->getFile('docker-compose.yml')
-			->putContents($dockerCompose)
-		;
+		return preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $dockerCompose);
 	}
 }
