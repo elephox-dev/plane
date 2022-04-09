@@ -13,8 +13,9 @@ use Elephox\Stream\StringStream;
 
 class InstallCommand implements CommandHandler
 {
-	public const STUBBED_SERVICES = ['mailhog'];
-	public const DEFAULT_SERVICES = ['mailhog'];
+	public const STUBBED_SERVICES = ['mailhog', 'postgres', 'redis'];
+	public const VOLUMED_SERVICES = ['postgres', 'redis'];
+	public const DEFAULT_SERVICES = ['mailhog', 'postgres', 'redis'];
 	public const STUBS_DIR = __DIR__ . '/../../stubs';
 
 	public function __construct(
@@ -60,10 +61,10 @@ class InstallCommand implements CommandHandler
 		$depends = Enumerable::from($services)
 			->where(fn(string $service) => in_array($service, self::STUBBED_SERVICES, true))
 			->select(fn(string $service) => "            - $service")
-			->aggregate(fn (string $acc, string $item) => $acc . PHP_EOL . $item, "");
+			->aggregate(fn (string $acc, string $item) => $acc . "\n" . $item, "");
 
 		if (!empty($depends)) {
-			$depends = 'depends_on:' . PHP_EOL . $depends;
+			$depends = "depends_on:\n" . $depends;
 		}
 
 		$stubs = rtrim(
@@ -74,15 +75,27 @@ class InstallCommand implements CommandHandler
 					->aggregate(fn (string $acc, string $item) => $acc . $item, "")
 		);
 
+		$volumes = Enumerable::from($services)
+			->where(fn(string $service) => in_array($service, self::VOLUMED_SERVICES, true))
+			->select(fn(string $service) => "    plane-$service:\n        driver: local")
+			->aggregate(fn (string $acc, string $item) => $acc . "\n" . $item, "")
+		;
+
+		if (!empty($volumes)) {
+			$volumes = "volumes:\n" . $volumes;
+		}
+
 		$dockerCompose = file_get_contents(self::STUBS_DIR . '/docker-compose.stub');
 		$dockerCompose = str_replace(
 			[
 				'{{depends}}',
-				'{{services}}'
+				'{{services}}',
+				'{{volumes}}',
 			],
 			[
 				empty($depends) ? '' : '        ' . $depends,
-				$stubs
+				$stubs,
+				$volumes,
 			],
 			$dockerCompose
 		);

@@ -21,10 +21,14 @@ RUN apt-get update && \
         libicu-dev \
         libssl-dev \
         libcap2-bin \
+        libpq-dev \
     --no-install-recommends
 
 RUN pecl install openswoole && docker-php-ext-enable openswoole
 RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && \
+    docker-php-ext-install pdo pdo_pgsql pgsql \
+RUN pecl install redis && docker-php-ext-enable redis
 
 RUN apt-get -y autoremove && \
     apt-get clean && \
