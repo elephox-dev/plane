@@ -8,7 +8,7 @@
             POSTGRES_USER: '${DB_USERNAME}'
             POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
         volumes:
-            - 'plane-pgsql:/var/lib/postgresql/data'
+            - 'plane-postgres:/var/lib/postgresql/data'
         networks:
             - plane
         healthcheck:
