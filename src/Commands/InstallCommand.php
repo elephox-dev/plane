@@ -105,7 +105,7 @@ class InstallCommand implements CommandHandler
 
 		$this->environment->getRootDirectory()
 			->getFile('docker-compose.yml')
-			->putContents(new StringStream($dockerCompose))
+			->putContents($dockerCompose)
 		;
 	}
 }
