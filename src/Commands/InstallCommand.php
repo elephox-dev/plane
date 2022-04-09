@@ -75,7 +75,7 @@ class InstallCommand implements CommandHandler
 		;
 
 		if (!empty($depends)) {
-			$depends = "depends_on:\n" . $depends;
+			$depends = "        depends_on:\n" . $depends;
 		}
 
 		$stubs = rtrim(
@@ -102,7 +102,7 @@ class InstallCommand implements CommandHandler
 				'{{volumes}}',
 			],
 			[
-				empty($depends) ? '' : '        ' . $depends,
+				$depends,
 				$stubs,
 				$volumes,
 			],
