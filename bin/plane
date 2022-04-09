@@ -79,10 +79,25 @@ if [ -f ./.env ]; then
     source ./.env
 fi
 
+if [ -f ./.env.local ]; then
+    source ./.env.local
+fi
+
+if [ -z ${APP_ENV+x} ]; then
+    if [ -f "./.env.$APP_ENV" ]; then
+        # shellcheck source=/dev/null
+        source "./.env.$APP_ENV"
+    fi
+
+    if [ -f "./.env.$APP_ENV.local" ]; then
+        # shellcheck source=/dev/null
+        source "./.env.$APP_ENV.local"
+    fi
+fi
+
 # Define environment variables...
 export APP_PORT=${APP_PORT:-80}
 export APP_SERVICE=${APP_SERVICE:-"elephox"}
-export DB_PORT=${DB_PORT:-3306}
 export WWWUSER=${WWWUSER:-$UID}
 export WWWGROUP=${WWWGROUP:-$(id -g)}
 

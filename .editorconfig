@@ -8,7 +8,7 @@ indent_style = space
 indent_size = 4
 trim_trailing_whitespace = true
 
-[{*.php,plane}]
+[*.php]
 indent_style = tab
 
 [*.md]

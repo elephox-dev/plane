@@ -27,15 +27,15 @@ class InstallCommand implements CommandHandler
 	{
 		$builder
 			->name('plane:install')
-			->description('Install the Plane\'s docker-compose file')
-			->argument('services', 'Services to install (\'none\' to skip)', implode(',', self::DEFAULT_SERVICES), false)
+			->description('Installs Plane\'s docker-compose file')
+			->optional('services', implode(',', self::DEFAULT_SERVICES), 'Services to install (\'none\' to skip)')
+			->optional('overwrite', false, 'Overwrite existing docker-compose.yml file')
 		;
 	}
 
 	public function handle(CommandInvocation $command): int|null
 	{
 		$services = $command->services;
-
 		if ($services) {
 			$services = $services === 'none' ? [] : explode(',', $services);
 		} else {
@@ -47,8 +47,10 @@ class InstallCommand implements CommandHandler
 		$dockerCompose = $this->buildDockerCompose($services);
 
 		$dockerComposeFile = $this->environment->getRootDirectory()->getFile('docker-compose.yml');
-		if ($dockerComposeFile->exists()) {
-			$this->logger->error('Docker-compose file already exists. Please remove it before installing.');
+
+		$overwrite = (bool) $command->overwrite;
+		if (!$overwrite && $dockerComposeFile->exists()) {
+			$this->logger->error('docker-compose.yml already exists. Please remove it before installing or pass --overwrite to the install command.');
 
 			return 1;
 		}
@@ -56,6 +58,7 @@ class InstallCommand implements CommandHandler
 		$dockerComposeFile->putContents($dockerCompose);
 
 		$this->logger->info('Plane installed successfully.');
+		$this->logger->warning('If you need to connect to your database, remember to update <grayBack>DB_HOST</grayBack> to your database\'s service name (e.g. <grayBack>\'postgres\'</grayBack>).');
 
 		return 0;
 	}
@@ -77,8 +80,8 @@ class InstallCommand implements CommandHandler
 
 		$stubs = rtrim(
 			Enumerable::from($services)
-					->select(static fn (string $service) => file_get_contents(self::STUBS_DIR . "/$service.stub"))
-					->aggregate(static fn (string $acc, string $item) => $acc . $item, ''),
+				->select(static fn (string $service) => file_get_contents(self::STUBS_DIR . "/$service.stub"))
+				->aggregate(static fn (string $acc, string $item) => $acc . $item, ''),
 		);
 
 		$volumes = Enumerable::from($services)
