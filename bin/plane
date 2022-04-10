@@ -83,7 +83,7 @@ if [ -f ./.env.local ]; then
     source ./.env.local
 fi
 
-if [ -z ${APP_ENV+x} ]; then
+if [ ${APP_ENV:+x} == "x" ]; then
     if [ -f "./.env.$APP_ENV" ]; then
         # shellcheck source=/dev/null
         source "./.env.$APP_ENV"
