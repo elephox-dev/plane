@@ -98,6 +98,13 @@ fi
 # Define environment variables...
 export APP_PORT=${APP_PORT:-80}
 export APP_SERVICE=${APP_SERVICE:-"elephox"}
+export APP_ENV=${APP_ENV:-"production"}
+export APP_DEBUG=${APP_DEBUG:-"false"}
+export DB_HOST=${DB_HOST:-"localhost"}
+export DB_PORT=${DB_PORT:-"5432"}
+export DB_DATABASE=${DB_DATABASE:-"postgres"}
+export DB_USERNAME=${DB_USERNAME:-"postgres"}
+export DB_PASSWORD=${DB_PASSWORD:-"secret"}
 export WWWUSER=${WWWUSER:-$UID}
 export WWWGROUP=${WWWGROUP:-$(id -g)}
 
