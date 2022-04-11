@@ -26,8 +26,7 @@ RUN apt-get update && \
 
 RUN pecl install openswoole && docker-php-ext-enable openswoole
 RUN pecl install xdebug && docker-php-ext-enable xdebug
-RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && \
-    docker-php-ext-install pdo pdo_pgsql \
+RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && docker-php-ext-install pdo pdo_pgsql
 RUN pecl install redis && docker-php-ext-enable redis
 
 RUN apt-get -y autoremove && \
