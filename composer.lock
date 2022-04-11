@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/autoloading.git",
-                "reference": "fa3d16119a2697183f9bf9fb5b6f9ebae7e361f9"
+                "reference": "11ae368de582679f51f1a1887042f5788bb70859"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/autoloading/zipball/fa3d16119a2697183f9bf9fb5b6f9ebae7e361f9",
-                "reference": "fa3d16119a2697183f9bf9fb5b6f9ebae7e361f9",
+                "url": "https://api.github.com/repos/elephox-dev/autoloading/zipball/11ae368de582679f51f1a1887042f5788bb70859",
+                "reference": "11ae368de582679f51f1a1887042f5788bb70859",
                 "shasum": ""
             },
             "require": {
@@ -53,7 +53,7 @@
                 "issues": "https://github.com/elephox-dev/autoloading/issues",
                 "source": "https://github.com/elephox-dev/autoloading/tree/develop"
             },
-            "time": "2022-04-09T22:17:55+00:00"
+            "time": "2022-04-11T21:15:52+00:00"
         },
         {
             "name": "elephox/collection",
@@ -61,16 +61,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/collection.git",
-                "reference": "7fd14bef458c6b45bde44832957abd70cdb3d312"
+                "reference": "5d73757ccb81bf4c65cd90dcae143bb2e07ed5a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/collection/zipball/7fd14bef458c6b45bde44832957abd70cdb3d312",
-                "reference": "7fd14bef458c6b45bde44832957abd70cdb3d312",
+                "url": "https://api.github.com/repos/elephox-dev/collection/zipball/5d73757ccb81bf4c65cd90dcae143bb2e07ed5a3",
+                "reference": "5d73757ccb81bf4c65cd90dcae143bb2e07ed5a3",
                 "shasum": ""
             },
             "require": {
-                "elephox/support": "dev-develop",
                 "jetbrains/phpstorm-attributes": "^1.0",
                 "php": "^8.1 <8.3"
             },
@@ -95,7 +94,7 @@
             "support": {
                 "source": "https://github.com/elephox-dev/collection/tree/develop"
             },
-            "time": "2022-04-07T22:19:46+00:00"
+            "time": "2022-04-11T21:44:32+00:00"
         },
         {
             "name": "elephox/configuration",
@@ -103,18 +102,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/configuration.git",
-                "reference": "52f2dff481d00c2fbb3bd55861518e499acae5d8"
+                "reference": "e5aecb468852f2aef481e80b5ccfa90a365e203d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/configuration/zipball/52f2dff481d00c2fbb3bd55861518e499acae5d8",
-                "reference": "52f2dff481d00c2fbb3bd55861518e499acae5d8",
+                "url": "https://api.github.com/repos/elephox-dev/configuration/zipball/e5aecb468852f2aef481e80b5ccfa90a365e203d",
+                "reference": "e5aecb468852f2aef481e80b5ccfa90a365e203d",
                 "shasum": ""
             },
             "require": {
                 "elephox/collection": "dev-develop",
                 "elephox/files": "dev-develop",
                 "elephox/oor": "dev-develop",
+                "elephox/support": "dev-develop",
                 "jetbrains/phpstorm-attributes": "^1.0",
                 "php": "^8.1 <8.3",
                 "vlucas/phpdotenv": "^5.4"
@@ -147,7 +147,7 @@
                 "issues": "https://github.com/elephox-dev/configuration/issues",
                 "source": "https://github.com/elephox-dev/configuration/tree/develop"
             },
-            "time": "2022-04-09T23:17:11+00:00"
+            "time": "2022-04-11T21:16:06+00:00"
         },
         {
             "name": "elephox/console",
@@ -155,12 +155,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/console.git",
-                "reference": "5932299d00e8959eb5dec5966adf1fb5fe847994"
+                "reference": "8354c0a318a3f9e4c84cb55f23f6fdbbac618e5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/console/zipball/5932299d00e8959eb5dec5966adf1fb5fe847994",
-                "reference": "5932299d00e8959eb5dec5966adf1fb5fe847994",
+                "url": "https://api.github.com/repos/elephox-dev/console/zipball/8354c0a318a3f9e4c84cb55f23f6fdbbac618e5d",
+                "reference": "8354c0a318a3f9e4c84cb55f23f6fdbbac618e5d",
                 "shasum": ""
             },
             "require": {
@@ -200,7 +200,7 @@
                 "issues": "https://github.com/elephox-dev/console/issues",
                 "source": "https://github.com/elephox-dev/console/tree/develop"
             },
-            "time": "2022-04-09T23:29:28+00:00"
+            "time": "2022-04-11T14:06:20+00:00"
         },
         {
             "name": "elephox/di",
@@ -208,12 +208,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/di.git",
-                "reference": "8b838d180ee4688a2b07ba7d46452e98f782da7e"
+                "reference": "904f09ac31ea7e1b40fc066f6c0e57040c5898df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/di/zipball/8b838d180ee4688a2b07ba7d46452e98f782da7e",
-                "reference": "8b838d180ee4688a2b07ba7d46452e98f782da7e",
+                "url": "https://api.github.com/repos/elephox-dev/di/zipball/904f09ac31ea7e1b40fc066f6c0e57040c5898df",
+                "reference": "904f09ac31ea7e1b40fc066f6c0e57040c5898df",
                 "shasum": ""
             },
             "require": {
@@ -246,7 +246,7 @@
             "support": {
                 "source": "https://github.com/elephox-dev/di/tree/develop"
             },
-            "time": "2022-04-09T23:06:46+00:00"
+            "time": "2022-04-11T21:15:52+00:00"
         },
         {
             "name": "elephox/files",
@@ -254,12 +254,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/files.git",
-                "reference": "04dc60815ece61ec7cf9e84018fce63148f8c1b1"
+                "reference": "806a8fa22b6f02d6a7ac3d317fa2552b5214e9a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/files/zipball/04dc60815ece61ec7cf9e84018fce63148f8c1b1",
-                "reference": "04dc60815ece61ec7cf9e84018fce63148f8c1b1",
+                "url": "https://api.github.com/repos/elephox-dev/files/zipball/806a8fa22b6f02d6a7ac3d317fa2552b5214e9a0",
+                "reference": "806a8fa22b6f02d6a7ac3d317fa2552b5214e9a0",
                 "shasum": ""
             },
             "require": {
@@ -292,7 +292,7 @@
                 "issues": "https://github.com/elephox-dev/files/issues",
                 "source": "https://github.com/elephox-dev/files/tree/develop"
             },
-            "time": "2022-04-09T09:41:26+00:00"
+            "time": "2022-04-11T21:15:52+00:00"
         },
         {
             "name": "elephox/logging",
@@ -300,12 +300,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/logging.git",
-                "reference": "d5ec12b7c976a2fcb528157fea8cf91d0568bc8b"
+                "reference": "231d1043f77a0089ab12d7c6ae279f54fd8df37d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/logging/zipball/d5ec12b7c976a2fcb528157fea8cf91d0568bc8b",
-                "reference": "d5ec12b7c976a2fcb528157fea8cf91d0568bc8b",
+                "url": "https://api.github.com/repos/elephox-dev/logging/zipball/231d1043f77a0089ab12d7c6ae279f54fd8df37d",
+                "reference": "231d1043f77a0089ab12d7c6ae279f54fd8df37d",
                 "shasum": ""
             },
             "require": {
@@ -335,7 +335,7 @@
                 "issues": "https://github.com/elephox-dev/logging/issues",
                 "source": "https://github.com/elephox-dev/logging/tree/develop"
             },
-            "time": "2022-04-07T19:49:29+00:00"
+            "time": "2022-04-11T22:41:13+00:00"
         },
         {
             "name": "elephox/mimey",
@@ -396,12 +396,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/oor.git",
-                "reference": "2e5ab0cddd4c2b59fd237f55605deec443eae9bf"
+                "reference": "d7011a88a9e69d43015d62ebb538680dd5d0e1b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/oor/zipball/2e5ab0cddd4c2b59fd237f55605deec443eae9bf",
-                "reference": "2e5ab0cddd4c2b59fd237f55605deec443eae9bf",
+                "url": "https://api.github.com/repos/elephox-dev/oor/zipball/d7011a88a9e69d43015d62ebb538680dd5d0e1b1",
+                "reference": "d7011a88a9e69d43015d62ebb538680dd5d0e1b1",
                 "shasum": ""
             },
             "require": {
@@ -430,7 +430,7 @@
                 "issues": "https://github.com/elephox-dev/oor/issues",
                 "source": "https://github.com/elephox-dev/oor/tree/develop"
             },
-            "time": "2022-04-07T19:49:29+00:00"
+            "time": "2022-04-11T21:15:52+00:00"
         },
         {
             "name": "elephox/stream",
@@ -438,12 +438,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/stream.git",
-                "reference": "c05bb60adb0e981dfd1f62ac0e52fac6bc6bc2a9"
+                "reference": "7d03f3951b6c3c380cb7f225d8bbda91d04a894c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/stream/zipball/c05bb60adb0e981dfd1f62ac0e52fac6bc6bc2a9",
-                "reference": "c05bb60adb0e981dfd1f62ac0e52fac6bc6bc2a9",
+                "url": "https://api.github.com/repos/elephox-dev/stream/zipball/7d03f3951b6c3c380cb7f225d8bbda91d04a894c",
+                "reference": "7d03f3951b6c3c380cb7f225d8bbda91d04a894c",
                 "shasum": ""
             },
             "require": {
@@ -472,7 +472,7 @@
                 "issues": "https://github.com/elephox-dev/stream/issues",
                 "source": "https://github.com/elephox-dev/stream/tree/develop"
             },
-            "time": "2022-04-07T19:49:29+00:00"
+            "time": "2022-04-11T21:15:52+00:00"
         },
         {
             "name": "elephox/support",
@@ -480,16 +480,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/support.git",
-                "reference": "d78d1d63c4b299fda34b42afa0260dbbb75c0e66"
+                "reference": "aeceb7ba32a7416dbfaf298f9ea2b30d44153f82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/support/zipball/d78d1d63c4b299fda34b42afa0260dbbb75c0e66",
-                "reference": "d78d1d63c4b299fda34b42afa0260dbbb75c0e66",
+                "url": "https://api.github.com/repos/elephox-dev/support/zipball/aeceb7ba32a7416dbfaf298f9ea2b30d44153f82",
+                "reference": "aeceb7ba32a7416dbfaf298f9ea2b30d44153f82",
                 "shasum": ""
             },
             "require": {
                 "elephox/mimey": "^4.0",
+                "elephox/oor": "dev-develop",
                 "php": "^8.1 <8.3"
             },
             "suggest": {
@@ -516,7 +517,7 @@
             "support": {
                 "source": "https://github.com/elephox-dev/support/tree/develop"
             },
-            "time": "2022-04-07T19:49:29+00:00"
+            "time": "2022-04-11T21:15:52+00:00"
         },
         {
             "name": "graham-campbell/result-type",

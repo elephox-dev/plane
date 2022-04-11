@@ -46,7 +46,7 @@ class InstallCommand implements CommandHandler
 
 		$dockerCompose = $this->buildDockerCompose($services);
 
-		$dockerComposeFile = $this->environment->getRootDirectory()->getFile('docker-compose.yml');
+		$dockerComposeFile = $this->environment->getRoot()->getFile('docker-compose.yml');
 
 		$overwrite = (bool) $command->overwrite;
 		if (!$overwrite && $dockerComposeFile->exists()) {
