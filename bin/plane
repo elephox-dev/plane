@@ -24,6 +24,7 @@ if test -t 1; then
         BOLD="$(tput bold)"
         YELLOW="$(tput setaf 3)"
         GREEN="$(tput setaf 2)"
+        LIGHT_GRAY="$(tput setaf 7)"
         NC="$(tput sgr0)"
     fi
 fi
@@ -66,6 +67,14 @@ function display_help {
     exit 1
 }
 
+# credits go to https://stackoverflow.com/a/17841619/5107884
+function join_by {
+  local d=${1-} f=${2-}
+  if shift 2; then
+    printf %s "$f" "${@/#/$d}"
+  fi
+}
+
 # Proxy the "help" command...
 if [ $# -gt 0 ]; then
     if [ "$1" == "help" ] || [ "$1" == "-h" ] || [ "$1" == "-help" ] || [ "$1" == "--help" ]; then
@@ -75,38 +84,50 @@ else
     display_help
 fi
 
+# Define environment variables...
+export APP_PORT=${APP_PORT:-80}
+export APP_SERVICE=${APP_SERVICE:-"elephox"}
+export APP_ENV=${APP_ENV:-"production"}
+export APP_DEBUG=${APP_DEBUG:-"false"}
+export WWWUSER=${WWWUSER:-$UID}
+export WWWGROUP=${WWWGROUP:-$(id -g)}
+
+set -a
+
+ENV_FILES=()
 if [ -f ./.env ]; then
     source ./.env
+
+    ENV_FILES+=(".env")
 fi
 
 if [ -f ./.env.local ]; then
     source ./.env.local
+
+    ENV_FILES+=(".env.local")
 fi
 
 if [ ${APP_ENV:+x} == "x" ]; then
     if [ -f "./.env.$APP_ENV" ]; then
         # shellcheck source=/dev/null
         source "./.env.$APP_ENV"
+
+        ENV_FILES+=(".env.$APP_ENV")
     fi
 
     if [ -f "./.env.$APP_ENV.local" ]; then
         # shellcheck source=/dev/null
         source "./.env.$APP_ENV.local"
+
+        ENV_FILES+=(".env.$APP_ENV.local")
     fi
 fi
 
-# Define environment variables...
-export APP_PORT=${APP_PORT:-80}
-export APP_SERVICE=${APP_SERVICE:-"elephox"}
-export APP_ENV=${APP_ENV:-"production"}
-export APP_DEBUG=${APP_DEBUG:-"false"}
-export DB_HOST=${DB_HOST:-"localhost"}
-export DB_PORT=${DB_PORT:-"5432"}
-export DB_DATABASE=${DB_DATABASE:-"postgres"}
-export DB_USERNAME=${DB_USERNAME:-"postgres"}
-export DB_PASSWORD=${DB_PASSWORD:-"secret"}
-export WWWUSER=${WWWUSER:-$UID}
-export WWWGROUP=${WWWGROUP:-$(id -g)}
+if [ "${#ENV_FILES[@]}" -ne 0 ]; then
+    echo "${LIGHT_GRAY}Loaded environment files: $(join_by ", " "${ENV_FILES[@]}")${NC}"
+fi
+
+set +a
 
 # Function that outputs Plane is not running...
 function plane_is_not_running {
