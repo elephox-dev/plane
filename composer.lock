@@ -256,12 +256,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/files.git",
-                "reference": "53b9a8c49e6a82942d601228a2bf84d5a3f435fe"
+                "reference": "fed7713f421e8a968e88a33138329499fb7c6285"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/files/zipball/53b9a8c49e6a82942d601228a2bf84d5a3f435fe",
-                "reference": "53b9a8c49e6a82942d601228a2bf84d5a3f435fe",
+                "url": "https://api.github.com/repos/elephox-dev/files/zipball/fed7713f421e8a968e88a33138329499fb7c6285",
+                "reference": "fed7713f421e8a968e88a33138329499fb7c6285",
                 "shasum": ""
             },
             "require": {
@@ -294,7 +294,7 @@
                 "issues": "https://github.com/elephox-dev/files/issues",
                 "source": "https://github.com/elephox-dev/files/tree/develop"
             },
-            "time": "2022-04-14T09:01:53+00:00"
+            "time": "2022-04-14T17:05:56+00:00"
         },
         {
             "name": "elephox/logging",
