@@ -16,6 +16,8 @@ class InstallCommand implements CommandHandler
 	public const VOLUMED_SERVICES = ['postgres', 'redis'];
 	public const DEFAULT_SERVICES = ['mailhog', 'postgres', 'redis'];
 	public const STUBS_DIR = __DIR__ . '/../../stubs';
+	public const AVAILABLE_RUNTIMES = ['8.1'];
+	public const DEFAULT_RUNTIME = '8.1';
 
 	public function __construct(
 		private readonly Logger $logger,
@@ -28,6 +30,7 @@ class InstallCommand implements CommandHandler
 		$builder
 			->name('plane:install')
 			->description('Installs Plane\'s docker-compose file')
+			->optional('runtime', self::DEFAULT_RUNTIME, 'The runtime to use')
 			->optional('services', implode(',', self::DEFAULT_SERVICES), 'Services to install (\'none\' to skip)')
 			->optional('overwrite', false, 'Overwrite existing docker-compose.yml file')
 		;
@@ -44,7 +47,14 @@ class InstallCommand implements CommandHandler
 
 		$this->logger->debug('Installing services: ' . implode(', ', $services));
 
-		$dockerCompose = $this->buildDockerCompose($services);
+		$runtime = $command->runtime;
+		if (!in_array($runtime, self::AVAILABLE_RUNTIMES, true)) {
+			$this->logger->error('Runtime ' . $runtime . ' is not available');
+
+			return 1;
+		}
+
+		$dockerCompose = $this->buildDockerCompose($runtime, $services);
 
 		$dockerComposeFile = $this->environment->getRoot()->getFile('docker-compose.yml');
 
@@ -66,7 +76,7 @@ class InstallCommand implements CommandHandler
 	/**
 	 * @param list<string> $services
 	 */
-	protected function buildDockerCompose(array $services): string
+	protected function buildDockerCompose(string $runtime, array $services): string
 	{
 		$depends = Enumerable::from($services)
 			->where(static fn (string $service) => in_array($service, self::STUBBED_SERVICES, true))
@@ -97,11 +107,13 @@ class InstallCommand implements CommandHandler
 		$dockerCompose = file_get_contents(self::STUBS_DIR . '/docker-compose.stub');
 		$dockerCompose = str_replace(
 			[
+				'{{runtime}}',
 				'{{depends}}',
 				'{{services}}',
 				'{{volumes}}',
 			],
 			[
+				$runtime,
 				$depends,
 				$stubs,
 				$volumes,
