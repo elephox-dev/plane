@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1a6bfc02365e1401230fdc99a27611af",
+    "content-hash": "22354f08236482deb9f91dacb838f11a",
     "packages": [
         {
             "name": "elephox/autoloading",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/autoloading.git",
-                "reference": "11ae368de582679f51f1a1887042f5788bb70859"
+                "reference": "21746b5d4aab344dd5c2589c9b9b9845a8d0d0d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/autoloading/zipball/11ae368de582679f51f1a1887042f5788bb70859",
-                "reference": "11ae368de582679f51f1a1887042f5788bb70859",
+                "url": "https://api.github.com/repos/elephox-dev/autoloading/zipball/21746b5d4aab344dd5c2589c9b9b9845a8d0d0d2",
+                "reference": "21746b5d4aab344dd5c2589c9b9b9845a8d0d0d2",
                 "shasum": ""
             },
             "require": {
@@ -51,9 +51,9 @@
             "description": "Elephox auto loading library.",
             "support": {
                 "issues": "https://github.com/elephox-dev/autoloading/issues",
-                "source": "https://github.com/elephox-dev/autoloading/tree/0.4.0-alpha2"
+                "source": "https://github.com/elephox-dev/autoloading/tree/0.4.0"
             },
-            "time": "2022-04-11T21:15:52+00:00"
+            "time": "2022-04-26T12:30:07+00:00"
         },
         {
             "name": "elephox/collection",
@@ -61,12 +61,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/collection.git",
-                "reference": "5d73757ccb81bf4c65cd90dcae143bb2e07ed5a3"
+                "reference": "8926809fb295600328a567f850cc2dbf4f5332f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/collection/zipball/5d73757ccb81bf4c65cd90dcae143bb2e07ed5a3",
-                "reference": "5d73757ccb81bf4c65cd90dcae143bb2e07ed5a3",
+                "url": "https://api.github.com/repos/elephox-dev/collection/zipball/8926809fb295600328a567f850cc2dbf4f5332f7",
+                "reference": "8926809fb295600328a567f850cc2dbf4f5332f7",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             ],
             "description": "Elephox collection library.",
             "support": {
-                "source": "https://github.com/elephox-dev/collection/tree/0.4.0-alpha2"
+                "source": "https://github.com/elephox-dev/collection/tree/0.4.0"
             },
-            "time": "2022-04-11T21:44:32+00:00"
+            "time": "2022-04-27T17:53:21+00:00"
         },
         {
             "name": "elephox/configuration",
@@ -102,12 +102,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/configuration.git",
-                "reference": "bc261116017e57220ab065a046085e52b2e792de"
+                "reference": "9adedb154d2c6f47280f9c2b712ccb30ab2c5dab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/configuration/zipball/bc261116017e57220ab065a046085e52b2e792de",
-                "reference": "bc261116017e57220ab065a046085e52b2e792de",
+                "url": "https://api.github.com/repos/elephox-dev/configuration/zipball/9adedb154d2c6f47280f9c2b712ccb30ab2c5dab",
+                "reference": "9adedb154d2c6f47280f9c2b712ccb30ab2c5dab",
                 "shasum": ""
             },
             "require": {
@@ -146,22 +146,22 @@
             "description": "Elephox configuration library.",
             "support": {
                 "issues": "https://github.com/elephox-dev/configuration/issues",
-                "source": "https://github.com/elephox-dev/configuration/tree/develop"
+                "source": "https://github.com/elephox-dev/configuration/tree/0.4.0"
             },
-            "time": "2022-04-13T23:57:18+00:00"
+            "time": "2022-04-27T15:53:22+00:00"
         },
         {
             "name": "elephox/console",
-            "version": "dev-develop",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/console.git",
-                "reference": "9885360580989f7722a8f5319dcc82c4d5a04293"
+                "reference": "606037acbecffef502d6cc707af791099eebed6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/console/zipball/9885360580989f7722a8f5319dcc82c4d5a04293",
-                "reference": "9885360580989f7722a8f5319dcc82c4d5a04293",
+                "url": "https://api.github.com/repos/elephox-dev/console/zipball/606037acbecffef502d6cc707af791099eebed6b",
+                "reference": "606037acbecffef502d6cc707af791099eebed6b",
                 "shasum": ""
             },
             "require": {
@@ -176,11 +176,6 @@
                 "jetbrains/phpstorm-attributes": "^1.0",
                 "php": "^8.1 <8.3"
             },
-            "suggest": {
-                "filp/whoops": "To be able to use the Whoops error handler ($builder->addWhoops())",
-                "nunomaduro/collision": "For pretty formatting of exceptions in command line usage"
-            },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -200,9 +195,9 @@
             "description": "Elephox console library.",
             "support": {
                 "issues": "https://github.com/elephox-dev/console/issues",
-                "source": "https://github.com/elephox-dev/console/tree/develop"
+                "source": "https://github.com/elephox-dev/console/tree/0.4.0"
             },
-            "time": "2022-04-13T23:57:18+00:00"
+            "time": "2022-04-27T16:04:59+00:00"
         },
         {
             "name": "elephox/di",
@@ -210,12 +205,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/di.git",
-                "reference": "7f0272a386746f9566507bd24d36b4ebecd46caa"
+                "reference": "8ab8e150b680c34023dd26aa840dd5cbc23727ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/di/zipball/7f0272a386746f9566507bd24d36b4ebecd46caa",
-                "reference": "7f0272a386746f9566507bd24d36b4ebecd46caa",
+                "url": "https://api.github.com/repos/elephox-dev/di/zipball/8ab8e150b680c34023dd26aa840dd5cbc23727ae",
+                "reference": "8ab8e150b680c34023dd26aa840dd5cbc23727ae",
                 "shasum": ""
             },
             "require": {
@@ -246,9 +241,9 @@
             ],
             "description": "Elephox dependency injection library.",
             "support": {
-                "source": "https://github.com/elephox-dev/di/tree/develop"
+                "source": "https://github.com/elephox-dev/di/tree/0.4.0"
             },
-            "time": "2022-04-13T23:57:18+00:00"
+            "time": "2022-04-26T12:30:07+00:00"
         },
         {
             "name": "elephox/files",
@@ -256,12 +251,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/files.git",
-                "reference": "fed7713f421e8a968e88a33138329499fb7c6285"
+                "reference": "d30e11b8a73865f4c429d2ffebf7fc6f3957e329"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/files/zipball/fed7713f421e8a968e88a33138329499fb7c6285",
-                "reference": "fed7713f421e8a968e88a33138329499fb7c6285",
+                "url": "https://api.github.com/repos/elephox-dev/files/zipball/d30e11b8a73865f4c429d2ffebf7fc6f3957e329",
+                "reference": "d30e11b8a73865f4c429d2ffebf7fc6f3957e329",
                 "shasum": ""
             },
             "require": {
@@ -292,9 +287,9 @@
             "description": "Elephox files library.",
             "support": {
                 "issues": "https://github.com/elephox-dev/files/issues",
-                "source": "https://github.com/elephox-dev/files/tree/develop"
+                "source": "https://github.com/elephox-dev/files/tree/0.4.0"
             },
-            "time": "2022-04-14T17:05:56+00:00"
+            "time": "2022-04-27T17:53:47+00:00"
         },
         {
             "name": "elephox/logging",
@@ -302,17 +297,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/logging.git",
-                "reference": "fb87413c5f8c0dbc596e44e9e6e252e783cd1871"
+                "reference": "c85e557f8d29893f96c7e946cd5c5c0e58208804"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/logging/zipball/fb87413c5f8c0dbc596e44e9e6e252e783cd1871",
-                "reference": "fb87413c5f8c0dbc596e44e9e6e252e783cd1871",
+                "url": "https://api.github.com/repos/elephox-dev/logging/zipball/c85e557f8d29893f96c7e946cd5c5c0e58208804",
+                "reference": "c85e557f8d29893f96c7e946cd5c5c0e58208804",
                 "shasum": ""
             },
             "require": {
                 "jetbrains/phpstorm-attributes": "^1.0",
                 "php": "^8.1 <8.3",
+                "psr/log": "^3.0",
                 "ricardoboss/php-console-logger": "^2.1"
             },
             "default-branch": true,
@@ -335,27 +331,27 @@
             "description": "Elephox Logging library.",
             "support": {
                 "issues": "https://github.com/elephox-dev/logging/issues",
-                "source": "https://github.com/elephox-dev/logging/tree/0.4.0-alpha2"
+                "source": "https://github.com/elephox-dev/logging/tree/0.4.0"
             },
-            "time": "2022-04-12T11:11:33+00:00"
+            "time": "2022-04-27T16:44:33+00:00"
         },
         {
             "name": "elephox/mimey",
-            "version": "4.0.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/mimey.git",
-                "reference": "84494e3288009585f4b4faf23c5e3431f4bc3597"
+                "reference": "24b7db2152e544272c051c4325f7829fbc7a08c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/mimey/zipball/84494e3288009585f4b4faf23c5e3431f4bc3597",
-                "reference": "84494e3288009585f4b4faf23c5e3431f4bc3597",
+                "url": "https://api.github.com/repos/elephox-dev/mimey/zipball/24b7db2152e544272c051c4325f7829fbc7a08c7",
+                "reference": "24b7db2152e544272c051c4325f7829fbc7a08c7",
                 "shasum": ""
             },
             "require": {
                 "jetbrains/phpstorm-attributes": "^1.0",
-                "php": "~8.1.0 || ~8.2.0"
+                "php": "^8.1 <8.3"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.5"
@@ -388,9 +384,9 @@
             ],
             "description": "PHP package for converting file extensions to MIME types and vice versa.",
             "support": {
-                "source": "https://github.com/elephox-dev/mimey/tree/4.0.0"
+                "source": "https://github.com/elephox-dev/mimey/tree/4.0.1"
             },
-            "time": "2022-02-11T16:34:21+00:00"
+            "time": "2022-04-27T00:35:19+00:00"
         },
         {
             "name": "elephox/oor",
@@ -398,12 +394,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/oor.git",
-                "reference": "d7011a88a9e69d43015d62ebb538680dd5d0e1b1"
+                "reference": "63bbb2b35bdb5f383417ec4357a87fa36e2d9a59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/oor/zipball/d7011a88a9e69d43015d62ebb538680dd5d0e1b1",
-                "reference": "d7011a88a9e69d43015d62ebb538680dd5d0e1b1",
+                "url": "https://api.github.com/repos/elephox-dev/oor/zipball/63bbb2b35bdb5f383417ec4357a87fa36e2d9a59",
+                "reference": "63bbb2b35bdb5f383417ec4357a87fa36e2d9a59",
                 "shasum": ""
             },
             "require": {
@@ -430,9 +426,9 @@
             "description": "Elephox Object-Oriented Revolution library.",
             "support": {
                 "issues": "https://github.com/elephox-dev/oor/issues",
-                "source": "https://github.com/elephox-dev/oor/tree/0.4.0-alpha2"
+                "source": "https://github.com/elephox-dev/oor/tree/v0.4.0"
             },
-            "time": "2022-04-11T21:15:52+00:00"
+            "time": "2022-04-27T15:53:22+00:00"
         },
         {
             "name": "elephox/stream",
@@ -440,12 +436,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/stream.git",
-                "reference": "7d03f3951b6c3c380cb7f225d8bbda91d04a894c"
+                "reference": "d60c543ef9f6d6601e7cc571a9223f10c80d64d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/stream/zipball/7d03f3951b6c3c380cb7f225d8bbda91d04a894c",
-                "reference": "7d03f3951b6c3c380cb7f225d8bbda91d04a894c",
+                "url": "https://api.github.com/repos/elephox-dev/stream/zipball/d60c543ef9f6d6601e7cc571a9223f10c80d64d8",
+                "reference": "d60c543ef9f6d6601e7cc571a9223f10c80d64d8",
                 "shasum": ""
             },
             "require": {
@@ -472,9 +468,9 @@
             "description": "Elephox Stream library.",
             "support": {
                 "issues": "https://github.com/elephox-dev/stream/issues",
-                "source": "https://github.com/elephox-dev/stream/tree/0.4.0-alpha2"
+                "source": "https://github.com/elephox-dev/stream/tree/v0.4.0"
             },
-            "time": "2022-04-11T21:15:52+00:00"
+            "time": "2022-04-26T12:30:07+00:00"
         },
         {
             "name": "elephox/support",
@@ -482,12 +478,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/support.git",
-                "reference": "aeceb7ba32a7416dbfaf298f9ea2b30d44153f82"
+                "reference": "2ef8d9cd073e9b7f41dd4e6a61a5ba35df5924c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/support/zipball/aeceb7ba32a7416dbfaf298f9ea2b30d44153f82",
-                "reference": "aeceb7ba32a7416dbfaf298f9ea2b30d44153f82",
+                "url": "https://api.github.com/repos/elephox-dev/support/zipball/2ef8d9cd073e9b7f41dd4e6a61a5ba35df5924c4",
+                "reference": "2ef8d9cd073e9b7f41dd4e6a61a5ba35df5924c4",
                 "shasum": ""
             },
             "require": {
@@ -517,9 +513,9 @@
             ],
             "description": "Elephox support library.",
             "support": {
-                "source": "https://github.com/elephox-dev/support/tree/0.4.0-alpha2"
+                "source": "https://github.com/elephox-dev/support/tree/v0.4.0"
             },
-            "time": "2022-04-11T21:15:52+00:00"
+            "time": "2022-04-26T12:30:07+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -748,6 +744,56 @@
                 "source": "https://github.com/php-fig/container/tree/2.0.2"
             },
             "time": "2021-11-05T16:47:00+00:00"
+        },
+        {
+            "name": "psr/log",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "fe5ea303b0887d5caefd3d431c3e61ad47037001"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/fe5ea303b0887d5caefd3d431c3e61ad47037001",
+                "reference": "fe5ea303b0887d5caefd3d431c3e61ad47037001",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Log\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/log/tree/3.0.0"
+            },
+            "time": "2021-07-14T16:46:02+00:00"
         },
         {
             "name": "ricardoboss/php-console-logger",
@@ -1727,67 +1773,17 @@
             "time": "2019-01-08T18:20:26+00:00"
         },
         {
-            "name": "psr/log",
-            "version": "3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/log.git",
-                "reference": "fe5ea303b0887d5caefd3d431c3e61ad47037001"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/fe5ea303b0887d5caefd3d431c3e61ad47037001",
-                "reference": "fe5ea303b0887d5caefd3d431c3e61ad47037001",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Log\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for logging libraries",
-            "homepage": "https://github.com/php-fig/log",
-            "keywords": [
-                "log",
-                "psr",
-                "psr-3"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/log/tree/3.0.0"
-            },
-            "time": "2021-07-14T16:46:02+00:00"
-        },
-        {
             "name": "symfony/console",
-            "version": "v6.0.7",
+            "version": "v6.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "70dcf7b2ca2ea08ad6ebcc475f104a024fb5632e"
+                "reference": "0d00aa289215353aa8746a31d101f8e60826285c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/70dcf7b2ca2ea08ad6ebcc475f104a024fb5632e",
-                "reference": "70dcf7b2ca2ea08ad6ebcc475f104a024fb5632e",
+                "url": "https://api.github.com/repos/symfony/console/zipball/0d00aa289215353aa8746a31d101f8e60826285c",
+                "reference": "0d00aa289215353aa8746a31d101f8e60826285c",
                 "shasum": ""
             },
             "require": {
@@ -1853,7 +1849,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v6.0.7"
+                "source": "https://github.com/symfony/console/tree/v6.0.8"
             },
             "funding": [
                 {
@@ -1869,7 +1865,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-31T17:18:25+00:00"
+            "time": "2022-04-20T15:01:42+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -2165,16 +2161,16 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v6.0.3",
+            "version": "v6.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "8661b74dbabc23223f38c9b99d3f8ade71170430"
+                "reference": "af7edab28d17caecd1f40a9219fc646ae751c21f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/8661b74dbabc23223f38c9b99d3f8ade71170430",
-                "reference": "8661b74dbabc23223f38c9b99d3f8ade71170430",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/af7edab28d17caecd1f40a9219fc646ae751c21f",
+                "reference": "af7edab28d17caecd1f40a9219fc646ae751c21f",
                 "shasum": ""
             },
             "require": {
@@ -2206,7 +2202,7 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/finder/tree/v6.0.3"
+                "source": "https://github.com/symfony/finder/tree/v6.0.8"
             },
             "funding": [
                 {
@@ -2222,7 +2218,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-26T17:23:29+00:00"
+            "time": "2022-04-15T08:07:58+00:00"
         },
         {
             "name": "symfony/options-resolver",
@@ -2537,16 +2533,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v6.0.7",
+            "version": "v6.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "e13f6757e267d687e20ec5b26ccfcbbe511cd8f4"
+                "reference": "d074154ea8b1443a96391f6e39f9e547b2dd01b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/e13f6757e267d687e20ec5b26ccfcbbe511cd8f4",
-                "reference": "e13f6757e267d687e20ec5b26ccfcbbe511cd8f4",
+                "url": "https://api.github.com/repos/symfony/process/zipball/d074154ea8b1443a96391f6e39f9e547b2dd01b9",
+                "reference": "d074154ea8b1443a96391f6e39f9e547b2dd01b9",
                 "shasum": ""
             },
             "require": {
@@ -2578,7 +2574,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v6.0.7"
+                "source": "https://github.com/symfony/process/tree/v6.0.8"
             },
             "funding": [
                 {
@@ -2594,7 +2590,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-18T16:21:55+00:00"
+            "time": "2022-04-12T16:11:42+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -2742,16 +2738,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v6.0.3",
+            "version": "v6.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "522144f0c4c004c80d56fa47e40e17028e2eefc2"
+                "reference": "ac0aa5c2282e0de624c175b68d13f2c8f2e2649d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/522144f0c4c004c80d56fa47e40e17028e2eefc2",
-                "reference": "522144f0c4c004c80d56fa47e40e17028e2eefc2",
+                "url": "https://api.github.com/repos/symfony/string/zipball/ac0aa5c2282e0de624c175b68d13f2c8f2e2649d",
+                "reference": "ac0aa5c2282e0de624c175b68d13f2c8f2e2649d",
                 "shasum": ""
             },
             "require": {
@@ -2807,7 +2803,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v6.0.3"
+                "source": "https://github.com/symfony/string/tree/v6.0.8"
             },
             "funding": [
                 {
@@ -2823,14 +2819,12 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-02T09:55:41+00:00"
+            "time": "2022-04-22T08:18:02+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "elephox/console": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

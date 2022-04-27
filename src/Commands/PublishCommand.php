@@ -11,8 +11,8 @@ use Elephox\Files\Directory;
 use Elephox\Files\File;
 use Elephox\Files\FileAlreadyExistsException;
 use Elephox\Files\Path;
-use Elephox\Logging\Contract\Logger;
 use InvalidArgumentException;
+use Psr\Log\LoggerInterface;
 use RuntimeException;
 use Throwable;
 
@@ -22,7 +22,7 @@ class PublishCommand implements CommandHandler
 	public const DEFAULT_PARTS = ['docker'];
 
 	public function __construct(
-		private readonly Logger $logger,
+		private readonly LoggerInterface $logger,
 		private readonly Environment $env,
 	) {
 	}
