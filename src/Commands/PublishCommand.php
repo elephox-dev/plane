@@ -101,11 +101,11 @@ class PublishCommand implements CommandHandler
 				preg_replace(
 					'/^\.\/vendor\/elephox\/plane\/runtimes\/.+$/',
 					$destination->getPathRelative($this->env->root),
-					$composeFile->getContents()
-				)
+					$composeFile->getContents(),
+				),
 			);
 		} catch (Throwable) {
-			$this->logger->error("Failed to update docker-compose.yml");
+			$this->logger->error('Failed to update docker-compose.yml');
 			$this->logger->error("You will need to update the docker-compose.yml file manually to point to the new Plane docker files at $destination");
 		}
 	}
