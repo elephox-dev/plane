@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "22354f08236482deb9f91dacb838f11a",
+    "content-hash": "d32959e57b0b06f917b277137e70769f",
     "packages": [
         {
             "name": "elephox/autoloading",
@@ -51,7 +51,7 @@
             "description": "Elephox auto loading library.",
             "support": {
                 "issues": "https://github.com/elephox-dev/autoloading/issues",
-                "source": "https://github.com/elephox-dev/autoloading/tree/0.4.0"
+                "source": "https://github.com/elephox-dev/autoloading/tree/v0.4.3"
             },
             "time": "2022-04-26T12:30:07+00:00"
         },
@@ -92,7 +92,7 @@
             ],
             "description": "Elephox collection library.",
             "support": {
-                "source": "https://github.com/elephox-dev/collection/tree/0.4.0"
+                "source": "https://github.com/elephox-dev/collection/tree/v0.4.3"
             },
             "time": "2022-04-27T17:53:21+00:00"
         },
@@ -146,13 +146,13 @@
             "description": "Elephox configuration library.",
             "support": {
                 "issues": "https://github.com/elephox-dev/configuration/issues",
-                "source": "https://github.com/elephox-dev/configuration/tree/0.4.0"
+                "source": "https://github.com/elephox-dev/configuration/tree/v0.4.3"
             },
             "time": "2022-04-27T15:53:22+00:00"
         },
         {
             "name": "elephox/console",
-            "version": "0.4.0",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/console.git",
@@ -176,6 +176,7 @@
                 "jetbrains/phpstorm-attributes": "^1.0",
                 "php": "^8.1 <8.3"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -195,7 +196,7 @@
             "description": "Elephox console library.",
             "support": {
                 "issues": "https://github.com/elephox-dev/console/issues",
-                "source": "https://github.com/elephox-dev/console/tree/0.4.0"
+                "source": "https://github.com/elephox-dev/console/tree/v0.4.3"
             },
             "time": "2022-04-27T16:04:59+00:00"
         },
@@ -241,7 +242,7 @@
             ],
             "description": "Elephox dependency injection library.",
             "support": {
-                "source": "https://github.com/elephox-dev/di/tree/0.4.0"
+                "source": "https://github.com/elephox-dev/di/tree/v0.4.3"
             },
             "time": "2022-04-26T12:30:07+00:00"
         },
@@ -287,7 +288,7 @@
             "description": "Elephox files library.",
             "support": {
                 "issues": "https://github.com/elephox-dev/files/issues",
-                "source": "https://github.com/elephox-dev/files/tree/0.4.0"
+                "source": "https://github.com/elephox-dev/files/tree/v0.4.3"
             },
             "time": "2022-04-27T17:53:47+00:00"
         },
@@ -331,7 +332,7 @@
             "description": "Elephox Logging library.",
             "support": {
                 "issues": "https://github.com/elephox-dev/logging/issues",
-                "source": "https://github.com/elephox-dev/logging/tree/0.4.0"
+                "source": "https://github.com/elephox-dev/logging/tree/v0.4.3"
             },
             "time": "2022-04-27T16:44:33+00:00"
         },
@@ -426,7 +427,7 @@
             "description": "Elephox Object-Oriented Revolution library.",
             "support": {
                 "issues": "https://github.com/elephox-dev/oor/issues",
-                "source": "https://github.com/elephox-dev/oor/tree/v0.4.0"
+                "source": "https://github.com/elephox-dev/oor/tree/v0.4.3"
             },
             "time": "2022-04-27T15:53:22+00:00"
         },
@@ -468,7 +469,7 @@
             "description": "Elephox Stream library.",
             "support": {
                 "issues": "https://github.com/elephox-dev/stream/issues",
-                "source": "https://github.com/elephox-dev/stream/tree/v0.4.0"
+                "source": "https://github.com/elephox-dev/stream/tree/v0.4.3"
             },
             "time": "2022-04-26T12:30:07+00:00"
         },
@@ -513,7 +514,7 @@
             ],
             "description": "Elephox support library.",
             "support": {
-                "source": "https://github.com/elephox-dev/support/tree/v0.4.0"
+                "source": "https://github.com/elephox-dev/support/tree/v0.4.3"
             },
             "time": "2022-04-26T12:30:07+00:00"
         },
@@ -1534,16 +1535,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.8.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "cbad1115aac4b5c3c5540e7210d3c9fba2f81fa3"
+                "reference": "aa805a8a4d8384c71a1367fceb57a081a4d969e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/cbad1115aac4b5c3c5540e7210d3c9fba2f81fa3",
-                "reference": "cbad1115aac4b5c3c5540e7210d3c9fba2f81fa3",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/aa805a8a4d8384c71a1367fceb57a081a4d969e4",
+                "reference": "aa805a8a4d8384c71a1367fceb57a081a4d969e4",
                 "shasum": ""
             },
             "require": {
@@ -1585,6 +1586,7 @@
                 "ext-dom": "For handling output formats in XML",
                 "ext-mbstring": "For handling non-UTF8 characters."
             },
+            "default-branch": true,
             "bin": [
                 "php-cs-fixer"
             ],
@@ -1611,7 +1613,7 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues",
-                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v3.8.0"
+                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/master"
             },
             "funding": [
                 {
@@ -1619,7 +1621,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-18T17:20:59+00:00"
+            "time": "2022-03-18T17:29:23+00:00"
         },
         {
             "name": "php-cs-fixer/diff",
@@ -2824,7 +2826,10 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "elephox/console": 20,
+        "friendsofphp/php-cs-fixer": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
