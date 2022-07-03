@@ -28,17 +28,17 @@ class InstallCommand implements CommandHandler
 	public function configure(CommandTemplateBuilder $builder): void
 	{
 		$builder
-			->name('plane:install')
-			->description('Installs Plane\'s docker-compose file')
-			->optional('runtime', self::DEFAULT_RUNTIME, 'The runtime to use')
-			->optional('services', implode(',', self::DEFAULT_SERVICES), 'Services to install (\'none\' to skip)')
-			->optional('overwrite', false, 'Overwrite existing docker-compose.yml file')
+			->setName('plane:install')
+			->setDescription('Installs Plane\'s docker-compose file')
 		;
+		$builder->addOption('runtime', default: self::DEFAULT_RUNTIME, description: 'The runtime to use', validator: fn ($value) => in_array($value, self::AVAILABLE_RUNTIMES, true));
+		$builder->addOption('services', default: implode(',', self::DEFAULT_SERVICES), description: 'Services to install (\'none\' to skip)');
+		$builder->addOption('overwrite', description: 'Overwrite existing docker-compose.yml file');
 	}
 
 	public function handle(CommandInvocation $command): int|null
 	{
-		$services = $command->services;
+		$services = $command->options->services->value;
 		if ($services) {
 			$services = $services === 'none' ? [] : explode(',', $services);
 		} else {
@@ -47,7 +47,7 @@ class InstallCommand implements CommandHandler
 
 		$this->logger->debug('Installing services: ' . implode(', ', $services));
 
-		$runtime = $command->runtime;
+		$runtime = $command->options->runtime->value;
 		if (!in_array($runtime, self::AVAILABLE_RUNTIMES, true)) {
 			$this->logger->error('Runtime ' . $runtime . ' is not available');
 
@@ -58,7 +58,7 @@ class InstallCommand implements CommandHandler
 
 		$dockerComposeFile = $this->environment->getRoot()->getFile('docker-compose.yml');
 
-		$overwrite = (bool) $command->overwrite;
+		$overwrite = (bool) $command->options->overwrite->value;
 		if (!$overwrite && $dockerComposeFile->exists()) {
 			$this->logger->error('docker-compose.yml already exists. Please remove it before installing or pass --overwrite to the install command.');
 
