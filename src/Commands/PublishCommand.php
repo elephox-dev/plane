@@ -34,28 +34,28 @@ class PublishCommand implements CommandHandler
 			'parts',
 			default: implode(
 				',',
-				self::DEFAULT_PARTS
+				self::DEFAULT_PARTS,
 			),
 			description: 'The parts to publish (' .
 			implode(
 				', ',
-				self::AVAILABLE_PARTS
+				self::AVAILABLE_PARTS,
 			) .
-			')'
+			')',
 		);
 		$builder->addOption(
 			'dockerDest',
 			default: 'docker',
-			description: 'The directory to publish the docker files to.'
+			description: 'The directory to publish the docker files to.',
 		);
 		$builder->addOption(
 			'binDest',
 			default: 'bin',
-			description: 'The directory to publish the Plane binary to.'
+			description: 'The directory to publish the Plane binary to.',
 		);
 		$builder->addOption(
 			'overwrite',
-			description: 'Overwrite existing files'
+			description: 'Overwrite existing files',
 		);
 	}
 
@@ -64,7 +64,7 @@ class PublishCommand implements CommandHandler
 		$parts =
 			explode(
 				',',
-				$command->arguments->parts->value
+				$command->arguments->parts->value,
 			);
 		if (Path::isRooted($command->arguments->dockerDest->value)) {
 			$dockerDestination = new Directory($command->arguments->dockerDest->value);
@@ -83,18 +83,18 @@ class PublishCommand implements CommandHandler
 		$overwrite =
 			filter_var(
 				$command->arguments->overwrite->value,
-				FILTER_VALIDATE_BOOL
+				FILTER_VALIDATE_BOOL,
 			);
 
 		foreach ($parts as $part) {
 			match ($part) {
 				'bin' => $this->publishBin(
 					$binDestination,
-					$overwrite
+					$overwrite,
 				),
 				'docker' => $this->publishDocker(
 					$dockerDestination,
-					$overwrite
+					$overwrite,
 				),
 				default => throw new InvalidArgumentException("Unknown part: $part"),
 			};
@@ -111,8 +111,8 @@ class PublishCommand implements CommandHandler
 			new File(
 				dirname(
 					__DIR__,
-					2
-				) . '/bin/plane'
+					2,
+				) . '/bin/plane',
 			);
 
 		try {
@@ -120,16 +120,16 @@ class PublishCommand implements CommandHandler
 
 			$sourceBin->copyTo(
 				$destination,
-				$overwrite
+				$overwrite,
 			);
 
 			$this->logger->warning(
-				"Remember to update any tools referencing the Plane binary to use your binary at $destinationBin"
+				"Remember to update any tools referencing the Plane binary to use your binary at $destinationBin",
 			);
 		} catch (FileAlreadyExistsException $e) {
 			throw new RuntimeException(
 				'Destination binary already exists. Use --overwrite to force publishing the Plane binary.',
-				previous: $e
+				previous: $e,
 			);
 		}
 	}
@@ -140,8 +140,8 @@ class PublishCommand implements CommandHandler
 			new Directory(
 				dirname(
 					__DIR__,
-					2
-				) . '/runtimes/8.1'
+					2,
+				) . '/runtimes/8.1',
 			);
 
 		try {
@@ -149,12 +149,12 @@ class PublishCommand implements CommandHandler
 
 			$sourceDir->copyTo(
 				$destination,
-				$overwrite
+				$overwrite,
 			);
 		} catch (FileAlreadyExistsException $e) {
 			throw new RuntimeException(
 				'Destination files are already present. Use --overwrite to force publishing the docker files.',
-				previous: $e
+				previous: $e,
 			);
 		}
 
@@ -170,7 +170,7 @@ class PublishCommand implements CommandHandler
 		} catch (Throwable) {
 			$this->logger->error('Failed to update docker-compose.yml');
 			$this->logger->error(
-				"You will need to update the docker-compose.yml file manually to point to the new Plane docker files at $destination"
+				"You will need to update the docker-compose.yml file manually to point to the new Plane docker files at $destination",
 			);
 		}
 	}

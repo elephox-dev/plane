@@ -31,7 +31,7 @@ class InstallCommand implements CommandHandler
 			->setName('plane:install')
 			->setDescription('Installs Plane\'s docker-compose file')
 		;
-		$builder->addOption('runtime', default: self::DEFAULT_RUNTIME, description: 'The runtime to use', validator: fn ($value) => in_array($value, self::AVAILABLE_RUNTIMES, true));
+		$builder->addOption('runtime', default: self::DEFAULT_RUNTIME, description: 'The runtime to use', validator: static fn ($value) => in_array($value, self::AVAILABLE_RUNTIMES, true));
 		$builder->addOption('services', default: implode(',', self::DEFAULT_SERVICES), description: 'Services to install (\'none\' to skip)');
 		$builder->addOption('overwrite', description: 'Overwrite existing docker-compose.yml file');
 	}
