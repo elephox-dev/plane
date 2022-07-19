@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ ! -z "$WWWUSER" ]; then
+if [ -n "$WWWUSER" ]; then
     usermod -u $WWWUSER plane
 fi
 
