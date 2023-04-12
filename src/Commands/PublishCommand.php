@@ -136,21 +136,12 @@ class PublishCommand implements CommandHandler
 
 	private function publishDocker(Directory $destination, bool $overwrite): void
 	{
-		$sourceDir =
-			new Directory(
-				dirname(
-					__DIR__,
-					2,
-				) . '/runtimes/8.1',
-			);
+		$sourceDir = new Directory(dirname(__DIR__, 2) . '/runtimes/8.2');
 
 		try {
 			$this->logger->info("Publishing Plane docker files to $destination");
 
-			$sourceDir->copyTo(
-				$destination,
-				$overwrite,
-			);
+			$sourceDir->copyTo($destination, $overwrite);
 		} catch (FileAlreadyExistsException $e) {
 			throw new RuntimeException(
 				'Destination files are already present. Use --overwrite to force publishing the docker files.',

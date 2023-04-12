@@ -16,8 +16,8 @@ class InstallCommand implements CommandHandler
 	public const VOLUMED_SERVICES = ['postgres', 'redis'];
 	public const DEFAULT_SERVICES = ['mailhog', 'postgres', 'redis'];
 	public const STUBS_DIR = __DIR__ . '/../../stubs';
-	public const AVAILABLE_RUNTIMES = ['8.1'];
-	public const DEFAULT_RUNTIME = '8.1';
+	public const AVAILABLE_RUNTIMES = ['8.1', '8.2'];
+	public const DEFAULT_RUNTIME = '8.2';
 
 	public function __construct(
 		private readonly LoggerInterface $logger,
