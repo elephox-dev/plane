@@ -70,14 +70,14 @@ class PublishCommand implements CommandHandler
 			$dockerDestination = new Directory($command->arguments->dockerDest->value);
 		} else {
 			$dockerDestination =
-				$this->env->root->getDirectory($command->arguments->dockerDest->value);
+				$this->env->root()->directory($command->arguments->dockerDest->value);
 		}
 
 		if (Path::isRooted($command->arguments->binDest->value)) {
 			$binDestination = new Directory($command->arguments->binDest->value);
 		} else {
 			$binDestination =
-				$this->env->root->getDirectory($command->arguments->binDest->value);
+				$this->env->root()->directory($command->arguments->binDest->value);
 		}
 
 		$overwrite =
@@ -106,7 +106,7 @@ class PublishCommand implements CommandHandler
 	private function publishBin(Directory $destination, bool $overwrite): void
 	{
 		$destination->ensureExists();
-		$destinationBin = $destination->getFile('plane');
+		$destinationBin = $destination->file('plane');
 		$sourceBin =
 			new File(
 				dirname(
@@ -159,12 +159,12 @@ class PublishCommand implements CommandHandler
 		}
 
 		try {
-			$composeFile = $this->env->root->getFile('docker-compose.yml');
-			$composeFile->putContents(
+			$composeFile = $this->env->root()->file('docker-compose.yml');
+			$composeFile->writeContents(
 				preg_replace(
-					'/^\.\/vendor\/elephox\/plane\/runtimes\/.+$/',
-					$destination->getPathRelative($this->env->root),
-					$composeFile->getContents(),
+					'#^\./vendor/elephox/plane/runtimes/.+$#',
+					$destination->relativePathTo($this->env->root),
+					$composeFile->contents(),
 				),
 			);
 		} catch (Throwable) {

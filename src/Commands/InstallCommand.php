@@ -56,7 +56,7 @@ class InstallCommand implements CommandHandler
 
 		$dockerCompose = $this->buildDockerCompose($runtime, $services);
 
-		$dockerComposeFile = $this->environment->getRoot()->getFile('docker-compose.yml');
+		$dockerComposeFile = $this->environment->root()->file('docker-compose.yml');
 
 		$overwrite = (bool) $command->options->overwrite->value;
 		if (!$overwrite && $dockerComposeFile->exists()) {
@@ -65,7 +65,7 @@ class InstallCommand implements CommandHandler
 			return 1;
 		}
 
-		$dockerComposeFile->putContents($dockerCompose);
+		$dockerComposeFile->writeContents($dockerCompose);
 
 		$this->logger->info('Plane installed successfully.');
 		$this->logger->warning('If you need to connect to your database, remember to update <grayBack>DB_HOST</grayBack> to your database\'s service name (e.g. <grayBack>\'postgres\'</grayBack>).');
